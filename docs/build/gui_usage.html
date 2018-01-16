@@ -248,8 +248,8 @@
 <h2>2. Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
 <p>When you first launch qMRLab, you will be presented with a blank interface. The interface consists of three columns, or panels. On the left, you have the <em>Menu</em> panel, in the center you have the <em>Main panel</em>, and on the right, in a separate floating window, you have the <em>Options</em> panel.</p>
 <div class="figure" id="id8">
-<a class="reference internal image-reference" href="_images/gui_default.png"><img alt="_images/gui_default.png" src="_images/gui_default.png" style="width: 930.0px; height: 457.0px;" /></a>
-<p class="caption"><span class="caption-text">Default interface with 3 panels: Menu, Main and floating Options</span></p>
+<a class="reference internal image-reference" href="_images/gui_default.png"><img alt="_images/gui_default.png" src="_images/gui_default.png" style="width: 975.0px; height: 611.0px;" /></a>
+<p class="caption"><span class="caption-text">Default interface with 3 panels: (1) Menu, (2) Main and (3) floating Options</span></p>
 </div>
 <div class="section" id="menu-panel">
 <h3>2.1 Menu Panel<a class="headerlink" href="#menu-panel" title="Permalink to this headline">¶</a></h3>
@@ -257,18 +257,17 @@
 <div class="section" id="method">
 <h4>2.1.1 Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h4>
 <p>At the top, you will find a drop-down menu where you can choose the MR acquisition method that you want to be working with. An updated list of the available methods is here: <a class="reference internal" href="documentation.html#methods-available"><span class="std std-ref">Methods available</span></a></p>
-<p>Note that the <em>Options</em> panel will update to the appropriate window according to your selection.
+<p>Note that the <em>Main</em> and <em>Options</em> panel will update to the appropriate window according to your selection.
 If you plan to be working mainly with a particular method, select it from the drop-down menu first, and the click on the <strong>Set Default</strong> button next to it. Next time you open qMRLab, your preferred method will be selected by default.</p>
 <p>Clicking on the <strong>Open Options Panel</strong> below the method drop-down menu will open the <em>Options</em> panel window and set its position on the right side of the <em>Main</em> panel. This is useful to bring back the <em>Options</em> panel window to the front if it’s hidden behind another window, to reset its position if you have resized the windows, or to reopen it in case you closed it.</p>
 </div>
 <div class="section" id="qmr-data-fit">
 <h4>2.1.2 qMR Data Fit<a class="headerlink" href="#qmr-data-fit" title="Permalink to this headline">¶</a></h4>
-<p>Clicking on the light gray <strong>Fit qMT Data</strong> button will change the <em>Main</em> panel to the <em>Fit qMR Data</em> view. This is where you can load your data files for fitting and for viewing the resulting parameters maps.</p>
-<p>Click the big <strong>Fit Data</strong> button only when you have selected your data files, set up your protocol and fitting options and are ready to begin the fitting process, which, depending on the size of your data and the method, can take from a few minutes to a couple of hours. The <strong>Save Results</strong> button will prompt you to save a .mat file with the results of your data fit. <strong>Load Results</strong> will load previously saved results and display them. Refer to this section <a class="reference internal" href="#data-fitting"><span class="std std-ref">3.      Data Fitting</span></a> for more information.</p>
+<p>Click on the big <strong>Fit Data</strong> button only when you have selected your data files, set up your protocol and fitting options and are ready to begin the fitting process, which, depending on the size of your data and the method, can take from a few minutes to a couple of hours. The <strong>Save Results</strong> button will prompt you to save a .mat file with the results of your data fit. <strong>Load Results</strong> will load previously saved results and display them. Refer to this section <a class="reference internal" href="#data-fitting"><span class="std std-ref">3.      Data Fitting</span></a> for more information.</p>
 </div>
 <div class="section" id="qmr-data-simulator">
 <h4>2.1.3 qMR Data Simulator<a class="headerlink" href="#qmr-data-simulator" title="Permalink to this headline">¶</a></h4>
-<p>The three light gray buttons allows you to choose between three different data simulation mode: <strong>Single Voxel Curve</strong>, <strong>Sensitivity Analysis</strong> and <strong>Multi Voxel Distribution</strong>. Clicking on any one of these buttons will bring the corresponding interface to the <em>Main</em> panel. When any of these interfaces are active, clicking on the big dark gray <strong>Simulate Data</strong> button will launch the simulation using the current setting. The <strong>Save Results</strong> button will prompt you to save a .mat file with the current simulation results. <strong>Load Results</strong> will load previously saved simulation results and display them in the appropriate panel. Refer to this section <a class="reference internal" href="#simulation"><span class="std std-ref">4.      Simulation</span></a> for more information.</p>
+<p>The buttons of this menu allow you to choose between different data simulation mode. All Methods that involve a data fitting procedure present at least the following simulations: <strong>Single Voxel Curve</strong>, <strong>Sensitivity Analysis</strong> and <strong>Multi Voxel Distribution</strong>. Clicking on any one of these buttons will bring the corresponding interface in a floating window. When any of these interfaces are opened, clicking on the <strong>update</strong> button will launch the simulation using the current options (defined in the <em>Options</em> panel). The <strong>Save Results</strong> button will prompt you to save a .mat file with the current simulation results. <strong>Load Results</strong> will load previously saved simulation results and display them in the appropriate panel. Refer to this section <a class="reference internal" href="#simulation"><span class="std std-ref">4.      Simulation</span></a> for more information.</p>
 <div class="section" id="single-voxel-curve">
 <h5>Single Voxel Curve<a class="headerlink" href="#single-voxel-curve" title="Permalink to this headline">¶</a></h5>
 <p>The <em>Single Voxel Curve</em> panel is a simple interface to simulate MR data from a single voxel, using the defined MR parameters and protocol. It is the fastest way to evaluate various acquisition protocols, the performance of the model and fitting options. Refer to section <a class="reference internal" href="#id1"><span class="std std-ref">4.1.    Single Voxel Curve</span></a> for more information.</p>
@@ -285,7 +284,7 @@ If you plan to be working mainly with a particular method, select it from the dr
 </div>
 <div class="section" id="main-panel">
 <h3>2.2 Main Panel<a class="headerlink" href="#main-panel" title="Permalink to this headline">¶</a></h3>
-<p>The <em>Main</em> panel is where the simulation or fit results are displayed. The view for this panel changes correspondingly to the task selected in the <em>Menu</em> panel.</p>
+<p>The <em>Main</em> panel is where you can load your data files for fitting and for viewing the resulting parameters maps. This panel changes correspondingly to the Method selected in the <em>Menu</em> panel.</p>
 </div>
 <div class="section" id="options-panel">
 <h3>2.3 Options Panel<a class="headerlink" href="#options-panel" title="Permalink to this headline">¶</a></h3>
@@ -296,7 +295,7 @@ If you plan to be working mainly with a particular method, select it from the dr
 </div>
 <div class="section" id="fitting">
 <h4>2.3.2   Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">¶</a></h4>
-<p>This is where you set up your fitting options. The fit parameters table lists all the variables that are available for fitting in the current method, a tick box to select which variables are to be held fixed, a starting value and lower/upper bounds. Depending on the method, additional options may be available. See <a class="reference internal" href="#id6"><span class="std std-ref">5.2.    Fitting</span></a> for more information.</p>
+<p>This is where you set up your fitting options. The fit parameters table lists all the variables that are available for fitting in the current method, a tick box to select which variables are to be held fixed, a starting value and lower/upper bounds. Note that some methods do not have fitting procedures, this table is empty in this case. Depending on the method, additional options may be available. See <a class="reference internal" href="#id6"><span class="std std-ref">5.2.    Fitting</span></a> for more information.</p>
 </div>
 <div class="section" id="options">
 <h4>2.3.3 Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h4>
