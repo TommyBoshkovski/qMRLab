@@ -22,8 +22,8 @@ dti: Diffusion Tensor Imaging
    .content pre, code { font-size:11px; }
    .content tt { font-size: 1.0em; }
    .content pre { margin:0px 0px 20px; }
-   .content pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
-   .content pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+   .content pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; overflow-x:scroll}
+   .content pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word -wrap: break-word;}
    .content pre.error { color:red; }
    .content @media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
    .content span.keyword { color:#0000FF }
@@ -38,6 +38,17 @@ dti: Diffusion Tensor Imaging
    .content .footer a:visited { color:#878787; }
    .content table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
    .content table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+   ::-webkit-scrollbar {
+       -webkit-appearance: none;
+       width: 4px;
+       height: 5px;
+      }
+   
+      ::-webkit-scrollbar-thumb {
+       border-radius: 5px;
+       background-color: rgba(0,0,0,.5);
+       -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+      }
    </style><div class="content"><h2 >Contents</h2><div ><ul ><li ><a href="#2">I- DESCRIPTION</a></li><li ><a href="#3">II- INITIALIZE MODEL OBJECT</a></li><li ><a href="#4">A- CREATE MODEL OBJECT</a></li><li ><a href="#5">B- MODIFY OPTIONS</a></li><li ><a href="#6">C- LOAD PROTOCOL</a></li><li ><a href="#7">III- FIT EXPERIMENTAL DATASET</a></li><li ><a href="#8">A- LOAD EXPERIMENTAL DATA</a></li><li ><a href="#9">B- FIT DATASET</a></li><li ><a href="#10">C- SHOW FITTING RESULTS</a></li><li ><a href="#11">IV- SAVE MAPS AND OBJECT</a></li><li ><a href="#12">V- SIMULATIONS</a></li><li ><a href="#13">A- Single Voxel Curve</a></li><li ><a href="#14">B- Sensitivity Analysis</a></li></ul></div><pre class="codeinput"><span class="comment">% This m-file has been automatically generated.</span>
    <span class="comment">% Command Line Interface (CLI) is well-suited for automatization</span>
    <span class="comment">% purposes and Octave.</span>
@@ -50,7 +61,7 @@ dti: Diffusion Tensor Imaging
    <span class="comment">%</span>
    <span class="comment">% Written by: Agah Karakuzu, 2017</span>
    <span class="comment">% =========================================================================</span>
-   </pre><h2 id="2">I- DESCRIPTION</h2><pre class="codeinput">qMRinfo(<span class="string">'dti'</span>); <span class="comment">% Display help</span>
+   </pre><h2 >I- DESCRIPTION<a name="2"></a></h2><pre class="codeinput">qMRinfo(<span class="string">'dti'</span>); <span class="comment">% Display help</span>
    </pre><pre class="codeoutput"> dti: Diffusion Tensor Imaging
      Methods:
        plotmodel        Plot the diffusion-weighted signal as a function of Gparallel
@@ -74,16 +85,16 @@ dti: Diffusion Tensor Imaging
           doc dti
    
    
-   </pre><h2 id="3">II- INITIALIZE MODEL OBJECT</h2><p >-------------------------------------------------------------------------</p><h2 id="4">A- CREATE MODEL OBJECT</h2><p >-------------------------------------------------------------------------</p><pre class="codeinput">Model = dti;
+   </pre><h2 >II- INITIALIZE MODEL OBJECT<a name="3"></a></h2><p >-------------------------------------------------------------------------</p><h2 >A- CREATE MODEL OBJECT<a name="4"></a></h2><p >-------------------------------------------------------------------------</p><pre class="codeinput">Model = dti;
    
    <span class="comment">% -------------------------------------------------------------------------</span>
-   </pre><h2 id="5">B- MODIFY OPTIONS</h2><pre >         |- This section will pop-up the options GUI. Close window to continue.
+   </pre><h2 >B- MODIFY OPTIONS<a name="5"></a></h2><pre >         |- This section will pop-up the options GUI. Close window to continue.
             |- Octave is not GUI compatible. Modify Model.options directly.
    -------------------------------------------------------------------------</pre><pre class="codeinput">Model = Custom_OptionsGUI(Model); <span class="comment">% You need to close GUI to move on.</span>
    
    
    <span class="comment">% -------------------------------------------------------------------------</span>
-   </pre><img src="_static/dti_batch_01.png" vspace="5" hspace="5" alt=""> <h2 id="6">C- LOAD PROTOCOL</h2><pre class="language-matlab">	   |- Respective command <span class="string">lines</span> <span class="string">appear</span> <span class="string">if</span> <span class="string">required</span> <span class="string">by</span> <span class="string">dti.</span>
+   </pre><img src="_static/dti_batch_01.png" vspace="5" hspace="5" style="width:569px;height:802px;" alt=""> <h2 >C- LOAD PROTOCOL<a name="6"></a></h2><pre class="language-matlab">	   |- Respective command <span class="string">lines</span> <span class="string">appear</span> <span class="string">if</span> <span class="string">required</span> <span class="string">by</span> <span class="string">dti.</span>
    -------------------------------------------------------------------------
    </pre><pre class="codeinput"><span class="comment">% dti object needs 1 protocol field(s) to be assigned:</span>
    
@@ -106,7 +117,7 @@ dti: Diffusion Tensor Imaging
    TE = [0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636; 0.0636];
    Model.Prot.DiffusionData.Mat = [ Gx Gy Gz Gnorm Delta delta TE];
    <span class="comment">% -----------------------------------------</span>
-   </pre><h2 id="7">III- FIT EXPERIMENTAL DATASET</h2><p >-------------------------------------------------------------------------</p><h2 id="8">A- LOAD EXPERIMENTAL DATA</h2><pre >         |- Respective command lines appear if required by dti.
+   </pre><h2 >III- FIT EXPERIMENTAL DATASET<a name="7"></a></h2><p >-------------------------------------------------------------------------</p><h2 >A- LOAD EXPERIMENTAL DATA<a name="8"></a></h2><pre >         |- Respective command lines appear if required by dti.
    -------------------------------------------------------------------------
    dti object needs 3 data input(s) to be assigned:</pre><pre class="codeinput"><span class="comment">% DiffusionData</span>
    <span class="comment">% SigmaNoise</span>
@@ -115,13 +126,13 @@ dti: Diffusion Tensor Imaging
    
    data = struct();
    <span class="comment">% DiffusionData.nii.gz contains [74   87   50  109] data.</span>
-   data.DiffusionData=double(load_nii_data(<span class="string">'/Users/ilanaleppert/Documents/work/qMRLab/Data/dti_demo/dti_data/DiffusionData.nii.gz'</span>));
+   data.DiffusionData=double(load_nii_data(<span class="string">'/Users/tommyboshkovski/Documents/GitHub/qMRLab/Data/dti_demo/dti_data/DiffusionData.nii.gz'</span>));
    <span class="comment">% Mask.nii.gz contains [74  87  50] data.</span>
-   data.Mask=double(load_nii_data(<span class="string">'/Users/ilanaleppert/Documents/work/qMRLab/Data/dti_demo/dti_data/Mask.nii.gz'</span>));
+   data.Mask=double(load_nii_data(<span class="string">'/Users/tommyboshkovski/Documents/GitHub/qMRLab/Data/dti_demo/dti_data/Mask.nii.gz'</span>));
    
    
    <span class="comment">% -------------------------------------------------------------------------</span>
-   </pre><h2 id="9">B- FIT DATASET</h2><pre >           |- This section will fit data.
+   </pre><h2 >B- FIT DATASET<a name="9"></a></h2><pre >           |- This section will fit data.
    -------------------------------------------------------------------------</pre><pre class="codeinput">FitResults = FitData(data,Model,0);
    
    FitResults.Model = Model; <span class="comment">% qMRLab output.</span>
@@ -129,16 +140,16 @@ dti: Diffusion Tensor Imaging
    <span class="comment">% -------------------------------------------------------------------------</span>
    </pre><pre class="codeoutput">Fitting voxel       3/164005
    ...done   0%
-   </pre><h2 id="10">C- SHOW FITTING RESULTS</h2><pre >         |- Output map will be displayed.</pre><pre class="codeinput"><span class="comment">%			|- If available, a graph will be displayed to show fitting in a voxel.</span>
+   </pre><h2 >C- SHOW FITTING RESULTS<a name="10"></a></h2><pre >         |- Output map will be displayed.</pre><pre class="codeinput"><span class="comment">%			|- If available, a graph will be displayed to show fitting in a voxel.</span>
    <span class="comment">% -------------------------------------------------------------------------</span>
    
    qMRshowOutput(FitResults,data,Model);
-   </pre><img src="_static/dti_batch_02.png" vspace="5" hspace="5" alt=""> <img src="_static/dti_batch_03.png" vspace="5" hspace="5" alt=""> <h2 id="11">IV- SAVE MAPS AND OBJECT</h2><pre class="codeinput">Model.saveObj(<span class="string">'dti_Demo.qmrlab.mat'</span>);
+   </pre><img src="_static/dti_batch_02.png" vspace="5" hspace="5" style="width:560px;height:420px;" alt=""> <img src="_static/dti_batch_03.png" vspace="5" hspace="5" style="width:560px;height:420px;" alt=""> <h2 >IV- SAVE MAPS AND OBJECT<a name="11"></a></h2><pre class="codeinput">Model.saveObj(<span class="string">'dti_Demo.qmrlab.mat'</span>);
    FitResultsSave_nii(FitResults, <span class="string">'dti_data/DiffusionData.nii.gz'</span>);
    
    <span class="comment">% Tip: You can load FitResults.mat in qMRLab graphical user interface</span>
-   </pre><h2 id="12">V- SIMULATIONS</h2><pre >   |- This section can be executed to run simulations for 'dti.
-   -------------------------------------------------------------------------</pre><h2 id="13">A- Single Voxel Curve</h2><pre >         |- Simulates Single Voxel curves:
+   </pre><h2 >V- SIMULATIONS<a name="12"></a></h2><pre >   |- This section can be executed to run simulations for 'dti.
+   -------------------------------------------------------------------------</pre><h2 >A- Single Voxel Curve<a name="13"></a></h2><pre >         |- Simulates Single Voxel curves:
                  (1) use equation to generate synthetic MRI data
                  (2) add rician noise
                  (3) fit and plot curve
@@ -152,7 +163,7 @@ dti: Diffusion Tensor Imaging
          FitResult = Model.Sim_Single_Voxel_Curve(x,Opt(1));
    
    <span class="comment">% -------------------------------------------------------------------------</span>
-   </pre><img src="_static/dti_batch_04.png" vspace="5" hspace="5" alt=""> <h2 id="14">B- Sensitivity Analysis</h2><pre >         |-    Simulates sensitivity to fitted parameters:
+   </pre><img src="_static/dti_batch_04.png" vspace="5" hspace="5" style="width:560px;height:420px;" alt=""> <h2 >B- Sensitivity Analysis<a name="14"></a></h2><pre >         |-    Simulates sensitivity to fitted parameters:
                    (1) vary fitting parameters from lower (lb) to upper (ub) bound.
                    (2) run Sim_Single_Voxel_Curve Nofruns times
                    (3) Compute mean and std across runs
@@ -167,4 +178,4 @@ dti: Diffusion Tensor Imaging
          SimResults = Model.Sim_Sensitivity_Analysis(OptTable,Opt(1));
          figure(<span class="string">'Name'</span>,<span class="string">'Sensitivity Analysis'</span>);
          SimVaryPlot(SimResults, <span class="string">'L1'</span> ,<span class="string">'L1'</span> );
-   </pre><img src="_static/dti_batch_05.png" vspace="5" hspace="5" alt=""> <p class="footer"><br ><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB R2017b</a><br ></p></div>
+   </pre><img src="_static/dti_batch_05.png" vspace="5" hspace="5" style="width:560px;height:420px;" alt=""> <p class="footer"><br ><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB R2016a</a><br ></p></div>
